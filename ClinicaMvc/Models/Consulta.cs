@@ -9,7 +9,7 @@ public class Consulta
     public int PacienteId { get; set; }
 
     public DateTime DataHora { get; set; }
-    public string? Observacoes { get; set; }
+    public string? Observacoes { get; set; } // Tornar opcional
     public StatusConsulta Status { get; set; } = StatusConsulta.Agendada;
 
     // Navegation Properties
