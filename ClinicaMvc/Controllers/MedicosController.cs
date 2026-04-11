@@ -42,13 +42,20 @@ namespace ClinicaMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Medico medico)
         {
-            if (ModelState.IsValid)
-            {
-                _repository.Criar(medico);
-                return RedirectToAction(nameof(Index));
-            }
-            return View(medico);
+            if (!ModelState.IsValid)
+                return View(medico);
 
+            _repository.Criar(medico);
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Medicos/Edit/5
+        public IActionResult Edit(int id)
+        {
+            var medico = _repository.ObterPorId(id);
+            if (medico == null)
+                return NotFound();
+            return View(medico);
         }
 
         // POST: Medicos/Edit/5
@@ -56,12 +63,11 @@ namespace ClinicaMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Medico medico)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return View(medico);
 
             _repository.Atualizar(medico);
             return RedirectToAction(nameof(Index));
-
         }
 
         // GET: Medicos/Delete/5
@@ -69,9 +75,7 @@ namespace ClinicaMvc.Controllers
         {
             var medico = _repository.ObterPorId(id);
             if (medico == null)
-            {
                 return NotFound();
-            }
             return View(medico);
         }
 
@@ -82,10 +86,9 @@ namespace ClinicaMvc.Controllers
         {
             var medico = _repository.ObterPorId(id);
             if (medico == null)
-            {
                 return NotFound();
-            }
             _repository.Deletar(medico);
             return RedirectToAction(nameof(Index));
         }
+    }
 }
