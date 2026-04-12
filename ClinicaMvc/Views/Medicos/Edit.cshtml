@@ -1,0 +1,28 @@
+﻿@model ClinicaMvc.Models.Medico
+
+@{
+    ViewData["Title"] = "Editar Médico";
+}
+
+<h2>Editar Médico</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Nome" class="form-label"></label>
+        <input asp-for="Nome" class="form-control" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CRM" class="form-label"></label>
+        <input asp-for="CRM" class="form-control" />
+        <span asp-validation-for="CRM" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Especialidade" class="form-label"></label>
+        <input asp-for="Especialidade" class="form-control" />
+        <span asp-validation-for="Especialidade" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
