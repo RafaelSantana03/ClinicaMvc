@@ -1,0 +1,23 @@
+﻿@model ClinicaMvc.Models.Medico
+
+@{
+    ViewData["Title"] = "Excluir Médico";
+}
+
+<h2>Excluir Médico</h2>
+
+<p class="text-danger">Tem certeza que deseja excluir o médico abaixo?</p>
+
+<div class="card" style="max-width: 500px;">
+    <div class="card-body">
+        <p><strong>Nome:</strong> @Model.Nome</p>
+        <p><strong>CRM:</strong> @Model.CRM</p>
+        <p><strong>Especialidade:</strong> @Model.Especialidade</p>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post" class="mt-3">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
