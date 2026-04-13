@@ -1,4 +1,5 @@
-﻿@model ClinicaMvc.Models.Medico
+﻿@using static ClinicaMvc.Models.Medico
+@model ClinicaMvc.Models.Medico
 
 @{
     ViewData["Title"] = "Editar Médico";
@@ -20,7 +21,9 @@
     </div>
     <div class="mb-3">
         <label asp-for="Especialidade" class="form-label"></label>
-        <input asp-for="Especialidade" class="form-control" />
+        <select asp-for="Especialidade" class="form-select"
+                asp-items="@Html.GetEnumSelectList<Especialidades>()">
+        </select>
         <span asp-validation-for="Especialidade" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
