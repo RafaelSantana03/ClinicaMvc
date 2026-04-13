@@ -1,0 +1,43 @@
+﻿@using static ClinicaMvc.Models.Consulta
+@model List<ClinicaMvc.Models.Consulta>
+
+@{
+    ViewData["Title"] = "Consultas";
+}
+
+<h2>Lista de Consultas</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Nova Consulta</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Médico</th>
+            <th>Paciente</th>
+            <th>Data e Hora</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var consulta in Model)
+        {
+            <tr>
+                <td>@consulta.Medico.Nome</td>
+                <td>@consulta.Paciente.Nome</td>
+                <td>@consulta.DataHora.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>
+                    <span class="badge @(consulta.Status == StatusConsulta.Agendada ? "bg-primary" :
+                      consulta.Status == StatusConsulta.Realizada ? "bg-success" : "bg-danger")">
+                    @consulta.Status
+                </span>
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@consulta.Id" class="btn btn-sm btn-info">Detalhes</a>
+                <a asp-action="Edit" asp-route-id="@consulta.Id" class="btn btn-sm btn-warning">Editar</a>
+                <a asp-action="Delete" asp-route-id="@consulta.Id" class="btn btn-sm btn-danger">Excluir</a>
+            </td>
+        </tr>
+                }
+    </tbody>
+</table>

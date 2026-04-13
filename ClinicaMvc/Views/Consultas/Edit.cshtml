@@ -1,0 +1,42 @@
+﻿@using static ClinicaMvc.Models.Consulta
+@model ClinicaMvc.Models.Consulta
+
+@{
+    ViewData["Title"] = "Editar Consulta";
+}
+
+<h2>Editar Consulta</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="MedicoId" class="form-label">Médico</label>
+        <select asp-for="MedicoId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.Medicos, "Id", "Nome"))">
+            <option value="">Selecione um médico</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PacienteId" class="form-label">Paciente</label>
+        <select asp-for="PacienteId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.Pacientes, "Id", "Nome"))">
+            <option value="">Selecione um paciente</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DataHora" class="form-label"></label>
+        <input asp-for="DataHora" class="form-control" type="datetime-local" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Observacoes" class="form-label"></label>
+        <textarea asp-for="Observacoes" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <select asp-for="Status" class="form-select"
+                asp-items="@Html.GetEnumSelectList<StatusConsulta>()">
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
