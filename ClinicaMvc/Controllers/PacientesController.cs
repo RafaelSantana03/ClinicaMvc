@@ -17,7 +17,16 @@ public class PacientesController : Controller
     public IActionResult Index()
     {
         var pacientes = _repository.ListarTodos();
-        return View(pacientes);
+
+        var viewModels = pacientes.Select(p => new Paciente
+        {
+            Id = p.Id,
+            Nome = p.Nome,
+            CPF = p.CPF,
+            DataNascimento = p.DataNascimento
+        }).ToList();
+
+        return View(viewModels);
     }
 
     // GET: Pacientes/Details/5

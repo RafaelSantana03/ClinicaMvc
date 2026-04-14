@@ -1,5 +1,6 @@
 ﻿using ClinicaMvc.Models;
 using ClinicaMvc.Repositories;
+using ClinicaMvc.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicaMvc.Controllers;
@@ -21,7 +22,17 @@ public class ConsultasController : Controller
     public IActionResult Index()
     {
         var consultas = _consultaRepository.ListarTodos();
-        return View(consultas);
+
+        var viewModels = consultas.Select(c => new ConsultaViewModel
+        {
+            Id = c.Id,
+            NomeMedico = c.Medico.Nome,     // ← navega até o objeto Medico e pega o Nome
+            NomePaciente = c.Paciente.Nome, // ← navega até o objeto Paciente e pega o Nome
+            DataHora = c.DataHora,
+            Status = c.Status.ToString()    // Converte o enum Status para string
+        }).ToList();
+
+        return View(viewModels);
     }
 
     // GET: Consultas/Details/5

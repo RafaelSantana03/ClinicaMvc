@@ -1,5 +1,6 @@
 ﻿using ClinicaMvc.Models;
 using ClinicaMvc.Repositories;
+using ClinicaMvc.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicaMvc.Controllers
@@ -17,7 +18,16 @@ namespace ClinicaMvc.Controllers
         public IActionResult Index()
         {
             var medicos = _repository.ListarTodos();
-            return View(medicos);
+
+            var viewModels = medicos.Select(m => new MedicoViewModel
+            {
+                Id = m.Id,
+                Nome = m.Nome,
+                CRM = m.CRM,
+                Especialidade = m.Especialidade.ToString()
+            }).ToList();
+
+            return View(viewModels);
         }
 
         // GET: Medicos/Details/5
