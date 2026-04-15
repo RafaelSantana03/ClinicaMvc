@@ -4,32 +4,41 @@
     ViewData["Title"] = "Médicos";
 }
 
-<h2>Lista de Médicos</h2>
+<div class="page-header">
+    <div>
+        <h2>Lista de Médicos</h2>
+    </div>
+    <a asp-action="Create" class="btn-primary-custom">
+        <i class="bi bi-plus-lg me-1"></i> Novo Médico
+    </a>
+</div>
 
-<a asp-action="Create" class="btn btn-primary mb-3">Novo Médico</a>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>CRM</th>
-            <th>Especialidade</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var medico in Model)
-        {
-            <tr>
-                <td>@medico.Nome</td>
-                <td>@medico.CRM</td>
-                <td>@medico.Especialidade</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@medico.Id" class="btn btn-sm btn-info">Detalhes</a>
-                    <a asp-action="Edit" asp-route-id="@medico.Id" class="btn btn-sm btn-warning">Editar</a>
-                    <a asp-action="Delete" asp-route-id="@medico.Id" class="btn btn-sm btn-danger">Excluir</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="dashboard-table-card">
+    <div class="table-responsive">
+        <table class="table-dark-custom w-100">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CRM</th>
+                    <th>Especialidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var medico in Model)
+                {
+                    <tr>
+                        <td>@medico.Nome</td>
+                        <td>@medico.CRM</td>
+                        <td>@medico.Especialidade</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@medico.Id" class="btn btn-sm btn-info">Detalhes</a>
+                            <a asp-action="Edit" asp-route-id="@medico.Id" class="btn btn-sm btn-warning">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@medico.Id" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

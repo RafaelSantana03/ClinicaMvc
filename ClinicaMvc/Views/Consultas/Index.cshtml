@@ -5,39 +5,48 @@
     ViewData["Title"] = "Consultas";
 }
 
-<h2>Lista de Consultas</h2>
+<div class="page-header">
+    <div>
+        <h2>Lista de Consultas</h2>
+    </div>
+    <a asp-action="Create" class="btn-primary-custom">
+        <i class="bi bi-plus-lg me-1"></i> Nova Consulta
+    </a>
+</div>
 
-<a asp-action="Create" class="btn btn-primary mb-3">Nova Consulta</a>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Médico</th>
-            <th>Paciente</th>
-            <th>Data e Hora</th>
-            <th>Status</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var consulta in Model)
-        {
-            <tr>
-                <td>@consulta.NomeMedico</td>
-                <td>@consulta.NomePaciente</td>
-                <td>@consulta.DataHora.ToString("dd/MM/yyyy HH:mm")</td>
-                <td>
-                    <span class="badge @(consulta.Status == "Agendada" ? "bg-primary" :
-                     consulta.Status == "Realizada" ? "bg-success" : "bg-danger")">
-                    @consulta.Status
-                </span>
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@consulta.Id" class="btn btn-sm btn-info">Detalhes</a>
-                <a asp-action="Edit" asp-route-id="@consulta.Id" class="btn btn-sm btn-warning">Editar</a>
-                <a asp-action="Delete" asp-route-id="@consulta.Id" class="btn btn-sm btn-danger">Excluir</a>
-            </td>
-        </tr>
-                }
-    </tbody>
-</table>
+<div class="dashboard-table-card">
+    <div class="table-responsive">
+        <table class="table-dark-custom w-100">
+            <thead>
+                <tr>
+                    <th>Médico</th>
+                    <th>Paciente</th>
+                    <th>Data e Hora</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var consulta in Model)
+                {
+                    <tr>
+                        <td>@consulta.NomeMedico</td>
+                        <td>@consulta.NomePaciente</td>
+                        <td>@consulta.DataHora.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            <span class="badge @(consulta.Status == "Agendada" ? "bg-primary" :
+                                                                  consulta.Status == "Realizada" ? "bg-success" : "bg-danger")">
+                            @consulta.Status
+                        </span>
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@consulta.Id" class="btn btn-sm btn-info">Detalhes</a>
+                        <a asp-action="Edit" asp-route-id="@consulta.Id" class="btn btn-sm btn-warning">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@consulta.Id" class="btn btn-sm btn-danger">Excluir</a>
+                    </td>
+                </tr>
+                                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -4,17 +4,26 @@
     ViewData["Title"] = "Detalhes do Médico";
 }
 
-<h2>Detalhes do Médico</h2>
+<div class="page-header">
+    <h2>Detalhes do Médico</h2>
+</div>
 
-<div class="card" style="max-width: 500px;">
-    <div class="card-body">
-        <p><strong>Nome:</strong> @Model.Nome</p>
-        <p><strong>CRM:</strong> @Model.CRM</p>
-        <p><strong>Especialidade:</strong> @Model.Especialidade</p>
+<div class="form-card" style="max-width: 500px;">
+    <div class="detail-row">
+        <span class="detail-label">Nome</span>
+        <span class="detail-value">@Model.Nome</span>
+    </div>
+    <div class="detail-row">
+        <span class="detail-label">CRM</span>
+        <span class="detail-value">@Model.CRM</span>
+    </div>
+    <div class="detail-row">
+        <span class="detail-label">Especialidade</span>
+        <span class="detail-value">@Model.Especialidade</span>
     </div>
 </div>
 
-<div class="mt-3">
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
-    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+<div class="mt-3 d-flex gap-2">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-primary-custom">Editar</a>
+    <a asp-action="Index" class="btn-secondary-custom">Voltar</a>
 </div>
