@@ -1,10 +1,11 @@
 ﻿using ClinicaMvc.Models;
 using ClinicaMvc.Repositories;
 using ClinicaMvc.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicaMvc.Controllers;
-
+[Authorize]
 public class ConsultasController : Controller
 {
     private readonly IConsultaRepository _consultaRepository;

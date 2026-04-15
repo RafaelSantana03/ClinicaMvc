@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="dashboard-header">
+    <h1><i class="bi bi-speedometer2 me-2"></i>Dashboard</h1>
+    <p>Visão geral do sistema</p>
+</div>
+
+<!-- CARDS -->
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color:#1e3a6e">
+                <i class="bi bi-person-badge" style="color:#2563EB"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-label">Médicos</span>
+                <span class="stat-value">@ViewBag.TotalMedicos</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color:#1a3a2a">
+                <i class="bi bi-people" style="color:#10B981"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-label">Pacientes</span>
+                <span class="stat-value">@ViewBag.TotalPacientes</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="stat-icon" style="background-color:#2d1f3a">
+                <i class="bi bi-calendar-check" style="color:#A855F7"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-label">Consultas</span>
+                <span class="stat-value">@ViewBag.TotalConsultas</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PRÓXIMAS CONSULTAS -->
+<div class="dashboard-table-card">
+    <div class="table-card-header">
+        <h5><i class="bi bi-calendar-week me-2"></i>Próximas Consultas</h5>
+        <a asp-controller="Consultas" asp-action="Index" class="btn-ver-todas">Ver todas</a>
+    </div>
+
+    @if (ViewBag.ProximasConsultas != null && ViewBag.ProximasConsultas.Count > 0)
+    {
+        <div class="table-responsive">
+            <table class="table-dark-custom">
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Médico</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var consulta in ViewBag.ProximasConsultas)
+                    {
+                        <tr>
+                            <td>@consulta.Paciente?.Nome</td>
+                            <td>@consulta.Medico?.Nome</td>
+                            <td>@consulta.DataConsulta.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td><span class="badge-agendada">Agendada</span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="empty-state">
+            <i class="bi bi-calendar-x"></i>
+            <p>Nenhuma consulta agendada</p>
+        </div>
+    }
+</div>

@@ -1,9 +1,10 @@
 ﻿using ClinicaMvc.Models;
 using ClinicaMvc.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicaMvc.Controllers;
-
+[Authorize]
 public class PacientesController : Controller
 {
     private readonly IPacienteRepository _repository;
