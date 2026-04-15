@@ -1,5 +1,5 @@
 ﻿@using static ClinicaMvc.Models.Consulta
-@model List<ClinicaMvc.Models.Consulta>
+@model List<ClinicaMvc.ViewModels.ConsultaViewModel>
 
 @{
     ViewData["Title"] = "Consultas";
@@ -23,12 +23,12 @@
         @foreach (var consulta in Model)
         {
             <tr>
-                <td>@consulta.Medico.Nome</td>
-                <td>@consulta.Paciente.Nome</td>
+                <td>@consulta.NomeMedico</td>
+                <td>@consulta.NomePaciente</td>
                 <td>@consulta.DataHora.ToString("dd/MM/yyyy HH:mm")</td>
                 <td>
-                    <span class="badge @(consulta.Status == StatusConsulta.Agendada ? "bg-primary" :
-                      consulta.Status == StatusConsulta.Realizada ? "bg-success" : "bg-danger")">
+                    <span class="badge @(consulta.Status == "Agendada" ? "bg-primary" :
+                     consulta.Status == "Realizada" ? "bg-success" : "bg-danger")">
                     @consulta.Status
                 </span>
             </td>
