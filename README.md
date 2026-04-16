@@ -8,25 +8,32 @@ Sistema web de gerenciamento de consultas médicas desenvolvido com **ASP.NET Co
 ## 🖥️ Telas do Sistema
 
 ### Login
-![Login]![Uploading login.png…]()
+![Login]!<img width="1919" height="1079" alt="login" src="https://github.com/user-attachments/assets/c205fc80-e5d9-4c2a-b3e0-306e74944c52" />
+
 
 ### Dashboard
-![Dashboard](docs/dashboard.png)
+![Dashboard]<img width="1919" height="1079" alt="dashboard" src="https://github.com/user-attachments/assets/791f7d27-9714-47c7-bcd0-151b2a5f60f7" />
+
 
 ### Médicos
-![Médicos](docs/medicos.png)
+![Médicos]<img width="1919" height="1079" alt="medicos" src="https://github.com/user-attachments/assets/5c6d63e8-5de6-4d02-a125-832013210a83" />
+
 
 ### Pacientes
-![Pacientes](docs/pacientes.png)
+![Pacientes]<img width="1919" height="1079" alt="pacientes" src="https://github.com/user-attachments/assets/4f95bb92-54ee-477e-a414-28bc886a2f4a" />
+
 
 ### Consultas
-![Consultas](docs/consultas.png)
+![Consultas]<img width="1919" height="1079" alt="consultas" src="https://github.com/user-attachments/assets/973101e0-bc82-414c-befa-28d12db9dbd0" />
+
 
 ### Detalhes da Consulta
-![Detalhes](docs/detalhes.png)
+![Detalhes]<img width="1919" height="1079" alt="detalhes" src="https://github.com/user-attachments/assets/f1dc83b2-5cbb-464f-86aa-3b01e1dad18e" />
+
 
 ### Excluir Consulta
-![Excluir](docs/excluir.png)
+![Excluir]<img width="1919" height="1079" alt="excluir" src="https://github.com/user-attachments/assets/06a5c344-f37a-473b-8dce-a9715732a876" />
+
 
 ---
 
